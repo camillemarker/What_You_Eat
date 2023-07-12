@@ -7,4 +7,12 @@ const Register = () => {
     password: '',
     confirmPassword: ''
   })
+
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.oreventDefault()
+  }
 }
