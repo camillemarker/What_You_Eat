@@ -14,8 +14,8 @@ mongoose
 
 const createItems = async () => {
   let items = [...Array(10)].map((item, idx) => ({
-    name: falso.commerce.productName().toString(),
-    quantity: falso.random.number({ min: 1, max: 20 }).toString()
+    name: falso.randPhrase().toString(),
+    quantity: falso.randPhrase().toString()
   }))
 
   await Item.deleteMany({})
