@@ -4,10 +4,25 @@ const middleware = require('../middleware')
 
 router.get('/', controller.GetItems)
 
-router.post('/', controller.CreateItem)
+router.post(
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.CreateItem
+)
 
-router.put('/:item_id', controller.UpdateItem)
+router.put(
+  '/:item_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.UpdateItem
+)
 
-router.delete('/:item_id', controller.DeleteItem)
+router.delete(
+  '/:item_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.DeleteItem
+)
 
 module.exports = router
