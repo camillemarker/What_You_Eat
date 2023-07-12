@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { RegisterUser } from '../services/Auth'
 
 const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -14,6 +15,17 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.oreventDefault()
+    await RegisterUser({
+      name: formValues.name,
+      email: formValues.email,
+      password: formValues.password
+    })
+    setFormValues({
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    })
   }
 
   return (
@@ -77,3 +89,5 @@ const Register = () => {
     </div>
   )
 }
+
+export default Register

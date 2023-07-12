@@ -23,3 +23,5 @@ const Nav = ({ user, handleLogout }) => {
 
   return <header>{user ? userOptions : publicOptions}</header>
 }
+
+export default Nav
