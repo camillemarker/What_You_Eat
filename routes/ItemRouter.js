@@ -3,23 +3,11 @@ const controller = require('../controllers/ItemController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetItems)
-router.item(
-  '/',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.CreateItem
-)
-router.put(
-  '/:item_id',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.UpdateItem
-)
-router.delete(
-  '/:item_id',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.DeleteItem
-)
+
+router.post('/', controller.CreateItem)
+
+router.put('/:item_id', controller.UpdateItem)
+
+router.delete('/:item_id', controller.DeleteItem)
 
 module.exports = router

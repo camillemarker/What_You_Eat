@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const itemSchema = require('./Item')
+const itemSchema = require('./ListItem')
 
 const Item = mongoose.model('Item', itemSchema)
 
