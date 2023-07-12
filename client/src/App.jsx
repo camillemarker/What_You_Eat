@@ -4,6 +4,12 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 
 const App = () => {
+  const [user, setUser] = useState(null)
+  const handleLogOut = () => {
+    setUser(null)
+    localStorage.clear()
+  }
+
   return (
     <div className="App">
       <Routes>
