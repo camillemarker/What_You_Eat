@@ -8,7 +8,7 @@ import SignIn from './pages/Signin'
 import Recipes from './pages/Recipes'
 import GroceryList from './pages/GroceryList'
 import MealPlan from './pages/MealPlan'
-
+import About from './pages/About'
 const App = () => {
   const [user, setUser] = useState(null)
   const handleLogout = () => {
@@ -27,6 +27,7 @@ const App = () => {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/grocerylist" element={<GroceryList />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
     </div>
