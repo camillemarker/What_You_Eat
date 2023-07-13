@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
 
 const Register = () => {
+  let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
@@ -14,7 +16,7 @@ const Register = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.oreventDefault()
+    e.preventDefault()
     await RegisterUser({
       name: formValues.name,
       email: formValues.email,
@@ -26,6 +28,7 @@ const Register = () => {
       password: '',
       confirmPassword: ''
     })
+    navigate('/signin')
   }
 
   return (
@@ -82,7 +85,7 @@ const Register = () => {
                 formValues.confirmPassword === formValues.password)
             }
           >
-            Sign In
+            Register
           </button>
         </form>
       </div>
