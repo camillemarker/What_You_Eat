@@ -6,6 +6,8 @@ import Register from './pages/Register'
 import Nav from './components/Nav'
 import SignIn from './pages/Signin'
 import Recipes from './pages/Recipes'
+import GroceryList from './pages/GroceryList'
+import Schedule from './pages/Schedule'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -23,6 +25,7 @@ const App = () => {
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/grocerylist" element={<GroceryList />} />
         </Routes>
       </main>
     </div>
