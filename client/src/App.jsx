@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import Home from './pages/Home'
 import Register from './pages/Register'
@@ -9,12 +9,26 @@ import Recipes from './pages/Recipes'
 import GroceryList from './pages/GroceryList'
 import MealPlan from './pages/MealPlan'
 import About from './pages/About'
+import { CheckSession } from './services/Auth'
+
 const App = () => {
   const [user, setUser] = useState(null)
   const handleLogout = () => {
     setUser(null)
     localStorage.clear()
   }
+
+  // const checkToken = async () => {
+  //   const user = await CheckSession()
+  //   setUser(user)
+  // }
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token')
+  //   if (token) {
+  //     checkToken()
+  //   }
+  // }, [])
 
   return (
     <div className="App">

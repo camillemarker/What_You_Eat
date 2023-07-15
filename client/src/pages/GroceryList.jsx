@@ -1,25 +1,53 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { getItems, deleteItem, addItem } from '../services/ItemService'
+import ItemForm from '../components/ItemForm'
+import Item from '../components/Item'
 
 const GroceryList = () => {
-  const [items, setitems] = useState([])
-  const [itemName, setItemName] = useState('')
-  const [itemQuantity, setItemQuantity] = useState('')
+  const [items, setItems] = useState([])
 
   useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const fetchedItems = await getItems()
+        setItems((prevItems) => [...prevItems, ...fetchedItems])
+      } catch (error) {
+        console.error('Error retrieving items', error)
+      }
+    }
+
     fetchItems()
   }, [])
 
-  const fetchItems = async () => {
+  const handleDeleteItem = async (itemId) => {
     try {
-      const response = await axios.get('/api/items')
-      setitems(response.data)
+      await deleteItem(itemId)
+      setItems((prevItems) => prevItems.filter((item) => item._id !== itemId))
     } catch (error) {
-      console.log(error)
+      console.error('Error deleting item', error)
     }
   }
 
-  return <div></div>
+  const handleAddItem = async (newItem) => {
+    try {
+      const createdItem = await addItem(newItem)
+      setItems((prevItems) => [...prevItems, createdItem])
+    } catch (error) {
+      console.error('Error adding item', error)
+    }
+  }
+
+  return (
+    <div>
+      <h1>Grocery List</h1>
+      <ItemForm addItem={handleAddItem} />
+      <ul>
+        {items.map((item) => (
+          <Item key={item._id} item={item} onDelete={handleDeleteItem} />
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default GroceryList
