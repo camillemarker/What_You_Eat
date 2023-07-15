@@ -25,7 +25,10 @@ export const addItem = async (newItem) => {
 
 export const deleteItem = async (itemId) => {
   try {
-    const response = await axios.delete(`${BASE_URL}/items/${itemId}`)
+    const authorization = localStorage.getItem('token')
+    const response = await axios.delete(`${BASE_URL}/items/${itemId}`, {
+      headers: { authorization }
+    })
     return response.data
   } catch (error) {
     throw new Error(error.response.data.error)
