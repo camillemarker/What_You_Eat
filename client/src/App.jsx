@@ -18,17 +18,18 @@ const App = () => {
     localStorage.clear()
   }
 
-  // const checkToken = async () => {
-  //   const user = await CheckSession()
-  //   setUser(user)
-  // }
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+  }
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   if (token) {
-  //     checkToken()
-  //   }
-  // }, [])
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    console.log(token)
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   return (
     <div className="App">
@@ -40,7 +41,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/mealplan" element={<MealPlan />} />
-          <Route path="/grocerylist" element={<GroceryList />} />
+          <Route path="/grocerylist" element={<GroceryList user={user} />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
