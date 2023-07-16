@@ -10,6 +10,7 @@ import GroceryList from './pages/GroceryList'
 import MealPlan from './pages/MealPlan'
 import About from './pages/About'
 import { CheckSession } from './services/Auth'
+import CreateRecipe from './pages/CreateRecipe'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/grocerylist" element={<GroceryList user={user} />} />
+          <Route path="/createrecipe" element={<CreateRecipe />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </main>

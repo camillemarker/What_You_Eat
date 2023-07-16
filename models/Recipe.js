@@ -1,14 +1,7 @@
 const { Schema } = require('mongoose')
-
-const ingredientSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  quantity: {
-    type: String
-  }
-})
+const ingredientSchema = require('./Ingredient')
+const commentSchema = require('./Comment')
+const userSchema = require('./User')
 
 const recipeSchema = new Schema({
   name: { type: String, required: true },
@@ -20,7 +13,9 @@ const recipeSchema = new Schema({
   photo: {
     type: String,
     required: true
-  }
+  },
+  creator: { type: { userSchema }, required: true },
+  comments: { type: [commentSchema], required: true }
 })
 
 module.exports = recipeSchema

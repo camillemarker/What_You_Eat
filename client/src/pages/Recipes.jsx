@@ -1,5 +1,9 @@
 const Recipes = () => {
-  return <div></div>
+  return (
+    <div>
+      <h1>Recipes</h1>
+    </div>
+  )
 }
 
 export default Recipes
