@@ -1,6 +1,6 @@
 const { Recipe } = require('../models')
 
-const GetItems = async (req, res) => {
+const GetRecipes = async (req, res) => {
   try {
     const items = await Recipe.find({})
     res.send(items)
@@ -10,5 +10,5 @@ const GetItems = async (req, res) => {
 }
 
 module.exports = {
-  GetItems
+  GetRecipes
 }
