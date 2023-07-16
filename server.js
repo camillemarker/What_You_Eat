@@ -4,6 +4,7 @@ const cors = require('cors')
 
 const ItemRouter = require('./routes/ItemRouter')
 const AuthRouter = require('./routes/AuthRouter')
+const RecipeRouter = require('./routes/RecipeRouter')
 
 const PORT = process.env.PORT || 3001
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/items', ItemRouter)
 app.use('/auth', AuthRouter)
+app.use('/recipes', RecipeRouter)
 
 app.use('/', (req, res) => {
   res.send(`Connected!`)
