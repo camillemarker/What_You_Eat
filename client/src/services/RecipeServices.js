@@ -35,3 +35,12 @@ export const SaveRecipe = async (recipeId, userId) => {
     throw error
   }
 }
+
+export const PostComment = async (recipeId, comment) => {
+  try {
+    const res = await Client.post(`/recipes/${recipeId}/comment`, { comment })
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

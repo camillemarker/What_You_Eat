@@ -48,9 +48,25 @@ const SaveRecipe = async (req, res) => {
   }
 }
 
+const AddComment = async (req, res) => {
+  try {
+    const { payload } = res.locals
+    const user = await User.findById(payload.id)
+    const recipe = await Recipe.findById(req.params.recipe_id)
+    const comment = req.body.commentrecipe.comments.push({
+      user: user.name,
+      comment: comment
+    })
+    await recipe.save()
+    res.send(recipe)
+  } catch (error) {
+    throw error
+  }
+}
 module.exports = {
   CreateRecipe,
   GetAllRecipes,
   GetRecipe,
-  SaveRecipe
+  SaveRecipe,
+  AddComment
 }

@@ -12,6 +12,7 @@ import MealPlan from './pages/MealPlan'
 import About from './pages/About'
 import NewRecipe from './pages/NewRecipe'
 import SavedRecipes from './pages/SavedRecipes'
+import RecipeDetails from './components/RecipeDetails'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/newrecipe" element={<NewRecipe />} />
           <Route path="/savedrecipes" element={<SavedRecipes />} />
           <Route path="/about" element={<About />} />
+          <Route path="/recipes/:id" element={<RecipeDetails />} />
         </Routes>
       </main>
     </div>

@@ -16,5 +16,10 @@ router.post(
   middleware.verifyToken,
   controller.SaveRecipe
 )
-
+router.post(
+  '/:recipe_id/comment',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.AddComment
+)
 module.exports = router
