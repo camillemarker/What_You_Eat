@@ -18,7 +18,7 @@ const Recipes = () => {
     <div>
       {recipes.map((recipe) => (
         <div key={recipe._id}>
-          <Link to={`/recipes/${recipe._id}`}>{recipe.title}</Link>
+          <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
         </div>
       ))}
     </div>
