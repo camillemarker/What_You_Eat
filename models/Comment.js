@@ -3,5 +3,5 @@ const userSchema = require('./User')
 
 const commentSchema = new Schema({
   content: { type: String, required: true },
-  user: { type: { userSchema }, required: true }
+  user: { type: userSchema, required: true }
 })

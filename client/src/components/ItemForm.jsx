@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { addItem } from '../services/ItemService'
 
 const ItemForm = ({ addItem }) => {
   const [itemQuantity, setItemQuantity] = useState('')

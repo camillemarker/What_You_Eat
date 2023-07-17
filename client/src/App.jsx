@@ -1,6 +1,7 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
+import { CheckSession } from './services/Auth'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Nav from './components/Nav'
@@ -9,8 +10,8 @@ import Recipes from './pages/Recipes'
 import GroceryList from './pages/GroceryList'
 import MealPlan from './pages/MealPlan'
 import About from './pages/About'
-import { CheckSession } from './services/Auth'
-import CreateRecipe from './pages/CreateRecipe'
+import NewRecipe from './pages/NewRecipe'
+import SavedRecipes from './pages/SavedRecipes'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -43,7 +44,8 @@ const App = () => {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/grocerylist" element={<GroceryList user={user} />} />
-          <Route path="/createrecipe" element={<CreateRecipe />} />
+          <Route path="/newrecipe" element={<NewRecipe />} />
+          <Route path="/savedrecipes" element={<SavedRecipes />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </main>

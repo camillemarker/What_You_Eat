@@ -1,7 +1,6 @@
 const { Schema } = require('mongoose')
 const ingredientSchema = require('./Ingredient')
 const commentSchema = require('./Comment')
-const userSchema = require('./User')
 
 const recipeSchema = new Schema({
   name: { type: String, required: true },
@@ -14,7 +13,7 @@ const recipeSchema = new Schema({
     type: String,
     required: true
   },
-  creator: { type: { userSchema }, required: true },
+  creator: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   comments: { type: [commentSchema], required: true }
 })
 

@@ -1,54 +1,56 @@
-const { Recipe } = require('../models')
+const { Recipe, User } = require('../models')
 
-const GetRecipes = async (req, res) => {
+const CreateRecipe = async (req, res) => {
   try {
-    const recipes = await Recipe.find({})
+    const { payload } = res.locals
+    const user = await User.findById(payload.id)
+    const recipe = await Recipe.create({ ...req.body, creator: user })
+    user.recipes.push(recipe)
+    await user.save()
+    res.send(recipe)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GetAllRecipes = async (req, res) => {
+  try {
+    const recipes = await Recipe.find()
     res.send(recipes)
   } catch (error) {
     throw error
   }
 }
 
-const CreateRecipe = async (req, res) => {
+const GetRecipe = async (req, res) => {
   try {
-    const recipe = await Recipe.create({ ...req.body })
+    const recipe = await Recipe.findById(req.params.recipe_id)
     res.send(recipe)
   } catch (error) {
     throw error
   }
 }
 
-const UpdateRecipe = async (req, res) => {
+const SaveRecipe = async (req, res) => {
   try {
-    const recipe = await Recipe.findByIdAndUpdate(
-      req.params.recipe_id,
-      req.body,
-      {
-        new: true
-      }
-    )
-    res.send(recipe)
-  } catch (error) {
-    throw error
-  }
-}
-
-const DeleteRecipe = async (req, res) => {
-  try {
-    await Recipe.deleteOne({ _id: req.params.recipe_id })
-    res.send({
-      msg: 'Recipe Deleted',
-      payload: req.params.recipe_id,
-      status: 'Ok'
-    })
+    const { payload } = res.locals
+    const user = await User.findById(payload.id)
+    const recipe = await Recipe.findById(req.params.recipe_id)
+    if (!user.savedRecipes.includes(recipe.id)) {
+      user.savedRecipes.push(recipe)
+      await user.save()
+      res.send({ status: 'Recipe Saved' })
+    } else {
+      res.send({ status: 'Recipe Already Saved!' })
+    }
   } catch (error) {
     throw error
   }
 }
 
 module.exports = {
-  GetRecipes,
   CreateRecipe,
-  UpdateRecipe,
-  DeleteRecipe
+  GetAllRecipes,
+  GetRecipe,
+  SaveRecipe
 }
