@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
-import { GetRecipe, PostComment } from '../services/RecipeServices'
+import {
+  GetRecipe,
+  // PostComment,
+  // DeleteComment,
+  AddToSavedRecipes
+} from '../services/RecipeServices'
 import { useParams } from 'react-router-dom'
 
-const RecipeDetails = ({ match }) => {
+const RecipeDetails = ({ user }) => {
   const [recipe, setRecipe] = useState({})
-  const [comment, setComment] = useState('')
+  // const [comment, setComment] = useState('')
   const { id } = useParams()
 
   useEffect(() => {
@@ -15,17 +20,36 @@ const RecipeDetails = ({ match }) => {
     fetchRecipe()
   }, [id])
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const updatedRecipe = await PostComment(match.params.id, comment)
-    setRecipe(updatedRecipe)
-    setComment('')
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   const updatedRecipe = await PostComment(id, comment)
+  //   setRecipe(updatedRecipe)
+  //   setComment('')
+  // }
+
+  // const handleDelete = async (commentId) => {
+  //   try {
+  //     const updatedRecipe = await DeleteComment(id, commentId)
+  //     setRecipe(updatedRecipe)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+
+  const handleSave = async () => {
+    try {
+      const res = await AddToSavedRecipes(id)
+      console.log(res.status)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
     <div>
       <h1>{recipe.name}</h1>
       <img src={recipe.photo} alt={recipe.name} />
+      <button onClick={handleSave}>Save Recipe</button>
       <p>{recipe.directions}</p>
       <ul>
         {recipe.ingredients?.map((ingredient, i) => (
@@ -34,11 +58,14 @@ const RecipeDetails = ({ match }) => {
           </li>
         ))}
       </ul>
-      <h2>Comments</h2>
+      {/* <h2>Comments</h2>
       {recipe.comments?.map((comment, i) => (
         <div key={i}>
           <p>
-            {comment.user}: {comment.comment}
+            {comment.user._id}: {comment.comment}
+            {user && user._id === comment.user._id && (
+              <button onClick={() => handleDelete(comment._id)}>Delete</button>
+            )}
           </p>
         </div>
       ))}
@@ -52,7 +79,7 @@ const RecipeDetails = ({ match }) => {
           />
         </label>
         <button type="submit">Post Comment</button>
-      </form>
+      </form> */}
     </div>
   )
 }

@@ -13,8 +13,8 @@ const recipeSchema = new Schema({
     type: String,
     required: true
   },
-  creator: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  comments: { type: [commentSchema], required: true }
+  creator: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+  // comments: { type: [commentSchema], required: true }
 })
 
 module.exports = recipeSchema

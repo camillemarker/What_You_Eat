@@ -48,25 +48,57 @@ const SaveRecipe = async (req, res) => {
   }
 }
 
-const AddComment = async (req, res) => {
+// const AddComment = async (req, res) => {
+//   const recipe = await Recipe.findById(req.params.id)
+//   let comment = {
+//     user: req.user._id,
+//     comment: req.body.comment
+//   }
+//   recipe.comments.push(comment)
+//   try {
+//     await recipe.save()
+//     res.send(`/recipe/${recipe._id}`)
+//   } catch (error) {
+//     throw error
+//   }
+// }
+
+// const DeleteComment = async (req, res, next) => {
+//   try {
+//     const recipe = await Recipe.findOne({
+//       'comment._id': req.params.id,
+//       'comment.user': req.user._id
+//     })
+
+//     if (!recipe) {
+//       return res.send('Recipe not found')
+//     }
+
+//     recipe.comment.remove(req.params.id)
+//     await recipe.save()
+
+//     res.send(`/recipes/${recipe._id}`)
+//   } catch (err) {
+//     next(err)
+//   }
+// }
+
+const GetSavedRecipes = async (req, res) => {
   try {
     const { payload } = res.locals
-    const user = await User.findById(payload.id)
-    const recipe = await Recipe.findById(req.params.recipe_id)
-    const comment = req.body.commentrecipe.comments.push({
-      user: user.name,
-      comment: comment
-    })
-    await recipe.save()
-    res.send(recipe)
+    const user = await User.findById(payload.id).populate('savedRecipes')
+    res.send(user.savedRecipes)
   } catch (error) {
     throw error
   }
 }
+
 module.exports = {
   CreateRecipe,
   GetAllRecipes,
   GetRecipe,
   SaveRecipe,
-  AddComment
+  // AddComment,
+  // DeleteComment,
+  GetSavedRecipes
 }

@@ -1,13 +1,11 @@
-// src/pages/SavedRecipes.jsx
 import { useState, useEffect } from 'react'
-import { GetRecipe } from '../services/RecipeServices'
+import { GetSavedRecipes } from '../services/RecipeServices'
 
 const SavedRecipes = ({ user }) => {
   const [recipes, setRecipes] = useState([])
 
   const fetchSavedRecipes = async () => {
-    const promises = user.savedRecipes.map((recipeId) => GetRecipe(recipeId))
-    const recipes = await Promise.all(promises)
+    const recipes = await GetSavedRecipes()
     setRecipes(recipes)
   }
 
@@ -19,8 +17,7 @@ const SavedRecipes = ({ user }) => {
     <div>
       {recipes.map((recipe) => (
         <div key={recipe._id}>
-          <h2>{recipe.title}</h2>
-          <p>{recipe.description}</p>
+          <h2>{recipe.name}</h2>
         </div>
       ))}
     </div>

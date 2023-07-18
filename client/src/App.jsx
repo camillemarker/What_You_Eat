@@ -8,7 +8,6 @@ import Nav from './components/Nav'
 import SignIn from './pages/Signin'
 import Recipes from './pages/Recipes'
 import GroceryList from './pages/GroceryList'
-import MealPlan from './pages/MealPlan'
 import About from './pages/About'
 import NewRecipe from './pages/NewRecipe'
 import SavedRecipes from './pages/SavedRecipes'
@@ -43,12 +42,11 @@ const App = () => {
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recipes" element={<Recipes />} />
-          <Route path="/mealplan" element={<MealPlan />} />
           <Route path="/grocerylist" element={<GroceryList user={user} />} />
           <Route path="/newrecipe" element={<NewRecipe />} />
           <Route path="/savedrecipes" element={<SavedRecipes />} />
           <Route path="/about" element={<About />} />
-          <Route path="/recipes/:id" element={<RecipeDetails />} />
+          <Route path="/recipes/:id" element={<RecipeDetails user={user} />} />
         </Routes>
       </main>
     </div>

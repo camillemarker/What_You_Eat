@@ -16,10 +16,24 @@ router.post(
   middleware.verifyToken,
   controller.SaveRecipe
 )
-router.post(
-  '/:recipe_id/comment',
+// router.post(
+//   '/:recipe_id/comment',
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.AddComment
+// )
+// router.delete(
+//   '/:recipe_id/comments/:comment_id',
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.DeleteComment
+// )
+
+router.get(
+  '/saved',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.AddComment
+  controller.GetSavedRecipes
 )
+
 module.exports = router
