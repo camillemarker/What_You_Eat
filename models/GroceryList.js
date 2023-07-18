@@ -1,8 +1,8 @@
 const { Schema } = require('mongoose')
-const Item = require('./itemSchema')
+const itemSchema = require('./ListItem')
 
 const groceryListSchema = new Schema({
-  items: [{}]
+  items: { type: [itemSchema], required: true }
 })
 
 module.exports = groceryListSchema

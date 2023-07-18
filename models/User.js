@@ -1,4 +1,5 @@
 const { Schema } = require('mongoose')
+const groceryListSchema = require('./GroceryList')
 
 const userSchema = new Schema(
   {

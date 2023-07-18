@@ -9,6 +9,12 @@ router.post(
   controller.CreateRecipe
 )
 router.get('/', controller.GetAllRecipes)
+router.get(
+  '/saved',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetSavedRecipes
+)
 router.get('/:recipe_id', controller.GetRecipe)
 router.post(
   '/:recipe_id/save',
@@ -28,12 +34,5 @@ router.post(
 //   middleware.verifyToken,
 //   controller.DeleteComment
 // )
-
-router.get(
-  '/saved',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.GetSavedRecipes
-)
 
 module.exports = router

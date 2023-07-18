@@ -38,7 +38,10 @@ const SaveRecipe = async (req, res) => {
     const recipe = await Recipe.findById(req.params.recipe_id)
     if (!user.savedRecipes.includes(recipe.id)) {
       user.savedRecipes.push(recipe)
+      console.log('BEFOREE SAVEE IN SAVVVEEE RECIPEEE')
       await user.save()
+      console.log('AFTER SAVEE IN SAVVVEEE RECIPEEE')
+      console.log(user)
       res.send({ status: 'Recipe Saved' })
     } else {
       res.send({ status: 'Recipe Already Saved!' })

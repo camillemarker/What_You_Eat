@@ -7,13 +7,16 @@ import {
 } from '../services/RecipeServices'
 import { useParams } from 'react-router-dom'
 
-const RecipeDetails = ({ user }) => {
+const RecipeDetails = () => {
   const [recipe, setRecipe] = useState({})
   // const [comment, setComment] = useState('')
   const { id } = useParams()
-
+  console.log('PRINT IDDDDDD', id)
+  console.log('PRINT recipe user IDDDDDD', recipe.creator)
   useEffect(() => {
+    console.log('BEFORE DECLARE FETCH RECIPE')
     const fetchRecipe = async () => {
+      console.log('BEFORE DECLARE DATA IN GET RECIPE')
       const data = await GetRecipe(id)
       setRecipe(data)
     }

@@ -5,8 +5,9 @@ const Item = ({ item, onDelete }) => {
 
   return (
     <li>
-      <span>{item.name}</span>
-      <span>{item.quantity}</span>
+      <span>
+        {item.quantity} {item.name}
+      </span>
       <button onClick={handleDelete}>Delete</button>
     </li>
   )
