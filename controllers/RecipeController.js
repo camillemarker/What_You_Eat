@@ -86,7 +86,7 @@ const SaveRecipe = async (req, res) => {
 //   }
 // }
 
-const GetSavedRecipes = async (res) => {
+const GetSavedRecipes = async (req, res) => {
   try {
     const { payload } = res.locals
     const user = await User.findById(payload.id).populate('savedRecipes')
