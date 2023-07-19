@@ -71,16 +71,9 @@ const GroceryList = () => {
   }
 
   return (
-    <div>
-      <h1>Add Item</h1>
+    <div className="grocery-list">
+      <h1>Grocery List</h1>
       <form onSubmit={updateId ? handleItemUpdate : handleSubmit}>
-        <input
-          type="text"
-          value={formValues.quantity}
-          onChange={handleChange}
-          name="quantity"
-          placeholder="Item Quantity"
-        />
         <input
           type="text"
           value={formValues.name}
@@ -88,19 +81,23 @@ const GroceryList = () => {
           name="name"
           placeholder="Item"
         />
+        <input
+          type="text"
+          value={formValues.quantity}
+          onChange={handleChange}
+          name="quantity"
+          placeholder="Item Quantity"
+        />
         <button type="submit">Add Item</button>
       </form>
       <div>
         <ul>
           {items.map((item, index) => (
             <li key={index}>
-              {item.name}
-              {item.quantity}{' '}
-              <button onClick={() => handleItemDelete(item._id)}>
-                Delete Item
-              </button>
+              {item.name} ({item.quantity})
+              <button onClick={() => handleItemDelete(item._id)}>✔️</button>
               <button onClick={() => handleUpdateStart(item._id, item)}>
-                Edit Item
+                Edit
               </button>
             </li>
           ))}
