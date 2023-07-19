@@ -23,7 +23,7 @@ export const GetRecipe = async (id) => {
 export const CreateRecipe = async (data) => {
   try {
     const res = await Client.post('/recipes', data)
-    return res.data
+    return res.data._id
   } catch (error) {
     throw error
   }

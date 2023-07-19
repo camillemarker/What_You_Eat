@@ -33,8 +33,8 @@ const NewRecipe = () => {
   const handleSubmit = async (e) => {
     console.log('starting handle submit ')
     e.preventDefault()
-    await CreateRecipe(formValues)
-    navigate('/recipes')
+    const recipeId = await CreateRecipe(formValues)
+    navigate(`/recipes/${recipeId}`)
   }
 
   return (
