@@ -49,18 +49,28 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div>
-      <h1>{recipe.name}</h1>
-      <img src={recipe.photo} alt={recipe.name} />
-      <button onClick={handleSave}>Save Recipe</button>
-      <p>{recipe.directions}</p>
-      <ul>
-        {recipe.ingredients?.map((ingredient, i) => (
-          <li key={i}>
-            {ingredient.name} - {ingredient.amount}
-          </li>
-        ))}
-      </ul>
+    <div className="recipe-details">
+      <h1 className="details-recipe-title">{recipe.name}</h1>
+      <button className="save-btn" onClick={handleSave}>
+        Save Recipe
+      </button>
+      <div className="content-wrapper">
+        <img
+          className="details-recipe-image"
+          src={recipe.photo}
+          alt={recipe.name}
+        />
+        <div className="recipe-text">
+          <ul className="ingredients-list">
+            {recipe.ingredients?.map((ingredient, i) => (
+              <li key={i}>
+                {ingredient.name} - {ingredient.amount}
+              </li>
+            ))}
+          </ul>
+          <p className="recipe-directions">{recipe.directions}</p>
+        </div>
+      </div>
       {/* <h2>Comments</h2>
       {recipe.comments?.map((comment, i) => (
         <div key={i}>

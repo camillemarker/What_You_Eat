@@ -6,7 +6,6 @@ const Nav = ({ user, handleLogout }) => {
     userOptions = (
       <nav className="navbar">
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
         <Link to="/recipes">Recipes</Link>
         <Link to="/grocerylist">Grocery List</Link>
         <Link to="/newrecipe">Create Recipe</Link>
@@ -21,7 +20,6 @@ const Nav = ({ user, handleLogout }) => {
   const publicOptions = (
     <nav className="navbar">
       <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
       <Link to="/register">Register</Link>
       <Link to="/signin">Sign In</Link>
     </nav>

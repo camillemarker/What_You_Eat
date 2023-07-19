@@ -10,7 +10,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #0439af;
-  padding: 10px;
+  padding: 20px;
   min-height: 25px;
 }
 
@@ -29,18 +29,20 @@ body {
 .saved-recipes {
   font-family: 'Rozha One', serif;
   color: #0439af;
-  font-size: 20px;
+  font-size: 30px;
+  padding-left: 50px;
 }
 
 .saves {
   font-size: 18px;
   color: #ff19bf;
 }
+
 .saves {
   margin: 10px;
   padding: 10px;
   background-color: #eadcfe;
-  width: 500px;
+  width: 700px;
   border-radius: 5px;
 }
 
@@ -232,4 +234,120 @@ body {
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Rozha One', serif;
+}
+
+.details-recipe-title {
+  font-size: 2em;
+  color: #fc5f22;
+  text-align: center;
+  width: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px;
+}
+
+.details-recipe-image {
+  width: 40%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.recipe-text {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.save-btn {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fc5f22;
+  color: #ffc897;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #d7bcfd;
+  font-family: Arial, sans-serif;
+}
+
+.card-overlay {
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+.input-wrapper {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-wrapper label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.log-btn .reg-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #fc5f22;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #fff;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #fc5f22;
+}
+
+.signin-link {
+  margin-top: 20px;
+}
+
+.signin-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signin-link a:hover {
+  text-decoration: underline;
 }

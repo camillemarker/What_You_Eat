@@ -8,7 +8,6 @@ import Nav from './components/Nav'
 import SignIn from './pages/Signin'
 import Recipes from './pages/Recipes'
 import GroceryList from './pages/GroceryList'
-import About from './pages/About'
 import NewRecipe from './pages/NewRecipe'
 import SavedRecipes from './pages/SavedRecipes'
 import RecipeDetails from './components/RecipeDetails'
@@ -45,7 +44,6 @@ const App = () => {
           <Route path="/grocerylist" element={<GroceryList user={user} />} />
           <Route path="/newrecipe" element={<NewRecipe />} />
           <Route path="/savedrecipes" element={<SavedRecipes user={user} />} />
-          <Route path="/about" element={<About />} />
           <Route path="/recipes/:id" element={<RecipeDetails user={user} />} />
         </Routes>
       </main>

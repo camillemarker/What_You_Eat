@@ -43,7 +43,10 @@ const SignIn = ({ setUser }) => {
               required
             />
           </div>
-          <button disabled={!formValues.email || !formValues.password}>
+          <button
+            className="log-btn"
+            disabled={!formValues.email || !formValues.password}
+          >
             Sign In
           </button>
         </form>
