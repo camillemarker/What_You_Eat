@@ -38,8 +38,13 @@ const NewRecipe = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="new-recipe">
+      <form onSubmit={handleSubmit} class-className="recipe-form">
+        <h1>Add A Recipe</h1>
+        <h3>
+          Have a great recipe you'd love to share? We're dying to try it! Upload
+          it to our recipe page using the form below:
+        </h3>
         <label>
           Recipe Name:
           <input
