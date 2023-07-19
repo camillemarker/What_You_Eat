@@ -29,26 +29,6 @@ export const CreateRecipe = async (data) => {
   }
 }
 
-// export const PostComment = async (recipeId, comment) => {
-//   try {
-//     const res = await Client.post(`/recipes/${recipeId}/comment`, { comment })
-//     return res.data
-//   } catch (error) {
-//     throw error
-//   }
-// }
-
-// export const DeleteComment = async (recipeId, commentId) => {
-//   try {
-//     const res = await Client.delete(
-//       `/recipes/${recipeId}/comments/${commentId}`
-//     )
-//     return res.data
-//   } catch (error) {
-//     throw error
-//   }
-// }
-
 export const AddToSavedRecipes = async (recipeId) => {
   try {
     const res = await Client.post(`/recipes/${recipeId}/save`)

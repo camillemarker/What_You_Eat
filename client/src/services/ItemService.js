@@ -10,10 +10,8 @@ export const AddItem = async (data) => {
 }
 
 export const GetAllItems = async () => {
-  console.log('BSTARTING GET ITEMMMMMM')
   try {
     const res = await Client.get('/items/all')
-    console.log('BEFORERETURNNNNN GET ITEMMMMMMM')
     return res.data
   } catch (error) {
     throw error

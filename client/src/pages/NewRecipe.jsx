@@ -18,12 +18,10 @@ const NewRecipe = () => {
     })
   }
   const handleChange = (e) => {
-    console.log('starting handle change ')
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
   const handleChangeIngredient = (e, index) => {
-    console.log('starting handle change ingredient ')
     const { name, value } = e.target
     const list = [...formValues.ingredients]
     list[index][name] = value
@@ -31,7 +29,6 @@ const NewRecipe = () => {
   }
 
   const handleSubmit = async (e) => {
-    console.log('starting handle submit ')
     e.preventDefault()
     const recipeId = await CreateRecipe(formValues)
     navigate(`/recipes/${recipeId}`)

@@ -11,31 +11,21 @@ const GroceryList = () => {
   const [formValues, setFormValues] = useState({ name: '', quantity: '' })
   const [updateId, setUpdateId] = useState(null)
 
-  console.log('PRINT ITEMS 11111111')
-
   const fetchItems = async () => {
     try {
       const items = await GetAllItems()
-      // const response = await GetAllItems()
-      // const items = response.data
-      console.log('PRINT ITEMS 22222222')
+
       setItems(items)
-      console.log('PRINT ITEMS 3333333')
     } catch (error) {
-      console.log('ERROR IN FETCH SAVED ITEMS', error)
       throw error
     }
   }
 
   useEffect(() => {
-    console.log('BEFOREFETCHHHHHITEMSS')
     fetchItems()
-    console.log('AFTERFETCHHHHHITEMMMS')
   }, [])
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    // await fetchItems()
     setFormValues({ name: '', quantity: '' })
     await AddItem(formValues)
   }
@@ -61,7 +51,7 @@ const GroceryList = () => {
       setFormValues({ name: '', quantity: '' })
       setUpdateId(null)
     } catch (error) {
-      console.error('Error in updating item', error)
+      console.log('Error in updating item', error)
     }
   }
 

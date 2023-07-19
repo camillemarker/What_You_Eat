@@ -1,6 +1,5 @@
 const { Schema } = require('mongoose')
 const ingredientSchema = require('./Ingredient')
-const commentSchema = require('./Comment')
 
 const recipeSchema = new Schema({
   name: { type: String, required: true },
@@ -14,7 +13,6 @@ const recipeSchema = new Schema({
     required: true
   },
   creator: { type: Schema.Types.ObjectId, ref: 'User', required: true }
-  // comments: { type: [commentSchema], required: true }
 })
 
 module.exports = recipeSchema

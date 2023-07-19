@@ -38,10 +38,9 @@ const SaveRecipe = async (req, res) => {
     const recipe = await Recipe.findById(req.params.recipe_id)
     if (!user.savedRecipes.includes(recipe.id)) {
       user.savedRecipes.push(recipe)
-      console.log('BEFOREE SAVEE IN SAVVVEEE RECIPEEE')
+
       await user.save()
-      console.log('AFTER SAVEE IN SAVVVEEE RECIPEEE')
-      // console.log(user)
+
       res.send({ status: 'Recipe Saved' })
     } else {
       res.send({ status: 'Recipe Already Saved!' })
@@ -50,41 +49,6 @@ const SaveRecipe = async (req, res) => {
     throw error
   }
 }
-
-// const AddComment = async (req, res) => {
-//   const recipe = await Recipe.findById(req.params.id)
-//   let comment = {
-//     user: req.user._id,
-//     comment: req.body.comment
-//   }
-//   recipe.comments.push(comment)
-//   try {
-//     await recipe.save()
-//     res.send(`/recipe/${recipe._id}`)
-//   } catch (error) {
-//     throw error
-//   }
-// }
-
-// const DeleteComment = async (req, res, next) => {
-//   try {
-//     const recipe = await Recipe.findOne({
-//       'comment._id': req.params.id,
-//       'comment.user': req.user._id
-//     })
-
-//     if (!recipe) {
-//       return res.send('Recipe not found')
-//     }
-
-//     recipe.comment.remove(req.params.id)
-//     await recipe.save()
-
-//     res.send(`/recipes/${recipe._id}`)
-//   } catch (err) {
-//     next(err)
-//   }
-// }
 
 const GetSavedRecipes = async (req, res) => {
   try {
@@ -101,7 +65,5 @@ module.exports = {
   GetAllRecipes,
   GetRecipe,
   SaveRecipe,
-  // AddComment,
-  // DeleteComment,
   GetSavedRecipes
 }

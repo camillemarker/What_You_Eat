@@ -4,24 +4,19 @@ import { Link } from 'react-router-dom'
 
 const SavedRecipes = ({ user }) => {
   const [recipes, setRecipes] = useState([])
-  console.log('PRINT RECIPES 11111111')
 
   const fetchSavedRecipes = async () => {
     try {
       const recipes = await GetSavedRecipes()
-      console.log('PRINT RECIPES 22222222')
+
       setRecipes(recipes)
-      console.log('PRINT RECIPES 3333333')
     } catch (error) {
-      console.log('ERROR IN FETCH SAVED', error)
       throw error
     }
   }
 
   useEffect(() => {
-    console.log('BEFOREFETCHHHHH')
     fetchSavedRecipes()
-    console.log('AFTERFETCHHHHH')
   }, [])
 
   return (

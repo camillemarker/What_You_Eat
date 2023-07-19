@@ -1,24 +1,20 @@
 const { Item, User } = require('../models')
 
 const AddItem = async (req, res) => {
-  console.log('AddItem function is called 555')
   try {
-    console.log('AddItem function is called')
     const { payload } = res.locals
     const user = await User.findById(payload.id)
     const item = await Item.create({ ...req.body, creator: user })
     user.groceryList.push(item)
     await user.save()
-    // console.log('User after item added: ', user)
+
     res.send(user.groceryList)
   } catch (error) {
-    console.error('AddItem error: ', error)
     throw error
   }
 }
 
 const GetAllItems = async (req, res) => {
-  console.log('important')
   try {
     const { payload } = res.locals
     const user = await User.findById(payload.id).populate('groceryList')
