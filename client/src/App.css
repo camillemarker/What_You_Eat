@@ -1,20 +1,58 @@
 body {
   margin: 0;
+  background-color: #d7bcfd;
+  font-family: 'Rozha One', serif;
 }
 
 .navbar {
+  font-family: 'Rozha One', serif;
   justify-content: space-between;
   align-items: center;
-  color: white;
-  background-color: rgb(8, 97, 110);
-  padding: 1em;
-  min-height: 2em;
-  font-family: 'Georgia';
+  background-color: #0439af;
+  padding: 10px;
+  min-height: 25px;
 }
 
 .navbar a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   font-weight: bold;
   margin-left: 0.5em;
+}
+
+.navbar a:hover {
+  color: #ff19bf;
+  font-size: 20px;
+}
+
+.saved-recipes {
+  font-family: 'Rozha One', serif;
+  color: #0439af;
+  font-size: 20px;
+}
+
+.saves {
+  font-size: 18px;
+  color: #ff19bf;
+}
+.saves {
+  margin: 10px;
+  padding: 10px;
+  background-color: #eadcfe;
+  width: 500px;
+  border-radius: 5px;
+}
+
+.saves a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.saves a:visited {
+  color: #0439af;
+}
+
+.saves a:hover {
+  color: #ff19bf;
+  font-size: 22px;
 }

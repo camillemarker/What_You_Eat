@@ -16,6 +16,7 @@ const Recipes = () => {
 
   return (
     <div>
+      <h1>Recipes</h1>
       {recipes.map((recipe) => (
         <div key={recipe._id}>
           <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
