@@ -94,7 +94,7 @@ const GroceryList = () => {
         <ul>
           {items.map((item, index) => (
             <li key={index}>
-              {item.name} ({item.quantity})
+              {item.name}({item.quantity})
               <button onClick={() => handleItemDelete(item._id)}>✔️</button>
               <button onClick={() => handleUpdateStart(item._id, item)}>
                 Edit

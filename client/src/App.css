@@ -5,12 +5,20 @@ body {
   color: #0439af;
 }
 
+.home {
+  background-image: url('./images/home-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
 .navbar {
   font-family: 'Rozha One', serif;
   justify-content: space-between;
   align-items: center;
   background-color: #0439af;
-  padding: 20px;
+  padding: 30px;
   min-height: 25px;
 }
 
@@ -31,6 +39,12 @@ body {
   color: #0439af;
   font-size: 30px;
   padding-left: 50px;
+  background-image: url('./images/saved-background.png');
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  height: 140vh;
+  width: 100%;
 }
 
 .saves {
@@ -64,9 +78,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 0px;
   padding: 30px;
   border-radius: 10px;
+  background-image: url('./images/add-background.png');
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .new-recipe form {
@@ -111,9 +131,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 0px;
   padding: 30px;
   border-radius: 10px;
+  border-radius: 10px;
+  background-image: url('./images/grocery-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .grocery-list h1 {

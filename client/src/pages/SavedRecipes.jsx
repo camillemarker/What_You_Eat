@@ -26,7 +26,7 @@ const SavedRecipes = ({ user }) => {
 
   return (
     <div className="saved-recipes">
-      <h1>User's Saved Recipes</h1>
+      <h1>Saved Recipes</h1>
       {recipes.map((recipe) => (
         <div key={recipe._id} className="saves">
           <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
