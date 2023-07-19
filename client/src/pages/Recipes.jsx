@@ -15,13 +15,22 @@ const Recipes = () => {
   }, [])
 
   return (
-    <div>
-      <h1>Recipes</h1>
-      {recipes.map((recipe) => (
-        <div key={recipe._id}>
-          <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
-        </div>
-      ))}
+    <div className="recipe-container">
+      <h1 className="recipe-title">Recipes</h1>
+      <div className="recipe-list">
+        {recipes.map((recipe) => (
+          <div key={recipe._id} className="recipe-card">
+            <Link to={`/recipes/${recipe._id}`}>
+              <img
+                src={recipe.photo}
+                alt={recipe.name}
+                className="recipe-photo"
+              />
+              <p>{recipe.name}</p>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
