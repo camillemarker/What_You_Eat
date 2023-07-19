@@ -1,4 +1,4 @@
-# What You Eat
+# What You Eat 🍽️
 
 ### 7/19/2023
 
@@ -14,13 +14,25 @@
 - MongoDb
 - Visual Studio Code
 - Canva
-- [Spoonacular API](https://spoonacular.com/food-api)
+- Lucid
+- Draw.Io
 
 #### **_Description_**
 
-Welcome to 'What You Eat'! This application allows users to conveniently plan their meals, explore recipes from the Spoonacular API, and generate grocery lists based on their selected recipes. With 'What You Eat', you can easily organize your weekly meals, keep track of your favorite recipes, declare diet goals for your week, and ensure you have all the ingredients you need for a delicious week ahead.
+Welcome to "What You Eat" – a hub for sharing, discovering, and savoring delicious recipes! This MERN stack application invites food lovers to come together and embark on a delightful culinary journey.
+
+With "What You Eat," you can create and share your favorite recipes with the community on the community recipes page. Explore detailed information such as ingredients, step-by-step directions, and captivating visuals for each recipe.
+
+But it doesn't stop there! Build your own personalized collection of saved recipes, ensuring your favorites are always just a click away. And when it's time to hit the grocery aisles, rely on the convenient Grocery List page to effortlessly manage your shopping needs.
+
+Join the vibrant foodie community of "What You Eat" today! Together, let's celebrate the joy of cooking and eating, one delectable dish at a time.
+
+Bon appétit!
 
 --
+
+- [Recipes](https://i.imgur.com/WPQYoe6.png)
+- [Add Recipe](https://i.imgur.com/wVFp39q.png)
 
 #### **_Getting Started_**
 
@@ -33,10 +45,13 @@ Welcome to 'What You Eat'! This application allows users to conveniently plan th
 
 #### **_Future Udates_**
 
-- TBD
+- Comments
+- Add Ingredients to Grocery List
+- Search Recipes
 
 --
 
 #### **_Credits_**
 
-- TBD
+- [Imagery/Backgrounds](https://www.canva.com/)
+- [Google Fonts: Rozha One ](https://fonts.google.com/specimen/Rozha+One)
