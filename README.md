@@ -31,8 +31,8 @@ Bon appétit!
 
 --
 
-- [Recipes](https://i.imgur.com/WPQYoe6.png)
-- [Add Recipe](https://i.imgur.com/wVFp39q.png)
+- ![Recipes](https://i.imgur.com/WPQYoe6.png)
+- ![Add Recipe](https://i.imgur.com/wVFp39q.png)
 
 #### **_Getting Started_**
 
