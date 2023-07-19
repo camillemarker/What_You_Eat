@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom'
 
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState({})
+  const [recipeSaved, setRecipeSaved] = useState(false)
   // const [comment, setComment] = useState('')
   const { id } = useParams()
   console.log('PRINT IDDDDDD', id)
@@ -43,6 +44,7 @@ const RecipeDetails = () => {
     try {
       const res = await AddToSavedRecipes(id)
       console.log(res.status)
+      setRecipeSaved(true)
     } catch (error) {
       console.error(error)
     }
@@ -52,7 +54,7 @@ const RecipeDetails = () => {
     <div className="recipe-details">
       <h1 className="details-recipe-title">{recipe.name}</h1>
       <button className="save-btn" onClick={handleSave}>
-        Save Recipe
+        {recipeSaved ? 'Saved!' : 'Save Recipe'}
       </button>
       <div className="content-wrapper">
         <img
