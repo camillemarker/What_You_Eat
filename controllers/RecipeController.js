@@ -41,7 +41,7 @@ const SaveRecipe = async (req, res) => {
       console.log('BEFOREE SAVEE IN SAVVVEEE RECIPEEE')
       await user.save()
       console.log('AFTER SAVEE IN SAVVVEEE RECIPEEE')
-      console.log(user)
+      // console.log(user)
       res.send({ status: 'Recipe Saved' })
     } else {
       res.send({ status: 'Recipe Already Saved!' })
@@ -86,7 +86,7 @@ const SaveRecipe = async (req, res) => {
 //   }
 // }
 
-const GetSavedRecipes = async (req, res) => {
+const GetSavedRecipes = async (res) => {
   try {
     const { payload } = res.locals
     const user = await User.findById(payload.id).populate('savedRecipes')

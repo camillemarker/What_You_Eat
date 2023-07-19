@@ -2,13 +2,18 @@ const router = require('express').Router()
 const controller = require('../controllers/ItemController')
 const middleware = require('../middleware')
 
-router.get('/', controller.GetItems)
-
 router.post(
-  '/',
+  '/add',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.CreateItem
+  controller.AddItem
+)
+
+router.get(
+  '/all',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetAllItems
 )
 
 router.put(

@@ -1,36 +1,39 @@
-import axios from 'axios'
-import { BASE_URL } from './api'
+import Client from './api'
 
-export const getItems = async () => {
+export const AddItem = async (data) => {
   try {
-    const response = await axios.get(`${BASE_URL}/items`)
-    return response.data
+    const res = await Client.post('/items/add', data)
+    return res.data
   } catch (error) {
-    throw new Error(error.response.data.error)
+    throw error
   }
 }
 
-export const addItem = async (newItem) => {
-  console.log('BEFORE RETURNNNNNNN')
+export const GetAllItems = async () => {
+  console.log('BSTARTING GET ITEMMMMMM')
   try {
-    const authorization = localStorage.getItem('token')
-    const response = await axios.post(`${BASE_URL}/items`, newItem, {
-      headers: { authorization }
-    })
-    return response.data
+    const res = await Client.get('/items/all')
+    console.log('BEFORERETURNNNNN GET ITEMMMMMMM')
+    return res.data
   } catch (error) {
-    throw new Error(error.response.data.error)
+    throw error
   }
 }
 
-export const deleteItem = async (itemId) => {
+export const DeleteItem = async (item_id) => {
   try {
-    const authorization = localStorage.getItem('token')
-    const response = await axios.delete(`${BASE_URL}/items/${itemId}`, {
-      headers: { authorization }
-    })
+    const res = await Client.delete(`/items/${item_id}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const UpdateItem = async (item_id, data) => {
+  try {
+    const response = await Client.put(`/items/${item_id}`, data)
     return response.data
   } catch (error) {
-    throw new Error(error.response.data.error)
+    throw error
   }
 }

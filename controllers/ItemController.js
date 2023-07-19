@@ -1,18 +1,28 @@
-const { Item } = require('../models')
+const { Item, User } = require('../models')
 
-const GetItems = async (req, res) => {
+const AddItem = async (req, res) => {
+  console.log('AddItem function is called 555')
   try {
-    const items = await Item.find({})
-    res.send(items)
+    console.log('AddItem function is called')
+    const { payload } = res.locals
+    const user = await User.findById(payload.id)
+    const item = await Item.create({ ...req.body, creator: user })
+    user.groceryList.push(item)
+    await user.save()
+    // console.log('User after item added: ', user)
+    res.send(user.groceryList)
   } catch (error) {
+    console.error('AddItem error: ', error)
     throw error
   }
 }
 
-const CreateItem = async (req, res) => {
+const GetAllItems = async (req, res) => {
+  console.log('important')
   try {
-    const item = await Item.create({ ...req.body })
-    res.send(item)
+    const { payload } = res.locals
+    const user = await User.findById(payload.id).populate('groceryList')
+    res.send(user.groceryList)
   } catch (error) {
     throw error
   }
@@ -20,10 +30,14 @@ const CreateItem = async (req, res) => {
 
 const UpdateItem = async (req, res) => {
   try {
-    const item = await Item.findByIdAndUpdate(req.params.item_id, req.body, {
+    const { payload } = res.locals
+    const { item_id } = req.params
+    const user = await User.findById(payload.id)
+    const updatedItem = await Item.findByIdAndUpdate(item_id, req.body, {
       new: true
     })
-    res.send(item)
+
+    res.send(updatedItem)
   } catch (error) {
     throw error
   }
@@ -31,16 +45,25 @@ const UpdateItem = async (req, res) => {
 
 const DeleteItem = async (req, res) => {
   try {
-    await Item.deleteOne({ _id: req.params.item_id })
-    res.send({ msg: 'Item Deleted', payload: req.params.item_id, status: 'Ok' })
+    const { payload } = res.locals
+    const { item_id } = req.params
+    const user = await User.findById(payload.id)
+    const index = user.groceryList.indexOf(item_id)
+    if (index !== -1) {
+      user.groceryList.splice(index, 1)
+      await user.save()
+    }
+
+    await Item.findByIdAndDelete(item_id)
+    res.send({ message: 'Item deleted successfully' })
   } catch (error) {
     throw error
   }
 }
 
 module.exports = {
-  GetItems,
-  CreateItem,
+  AddItem,
+  GetAllItems,
   UpdateItem,
   DeleteItem
 }

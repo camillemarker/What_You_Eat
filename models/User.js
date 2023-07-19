@@ -1,5 +1,4 @@
 const { Schema } = require('mongoose')
-const groceryListSchema = require('./GroceryList')
 
 const userSchema = new Schema(
   {
@@ -7,7 +6,8 @@ const userSchema = new Schema(
     email: { type: String, required: true },
     passwordDigest: { type: String, required: true },
     savedRecipes: [{ type: Schema.Types.ObjectId, ref: 'Recipe' }],
-    recipes: [{ type: Schema.Types.ObjectId, ref: 'Recipe' }]
+    recipes: [{ type: Schema.Types.ObjectId, ref: 'Recipe' }],
+    groceryList: [{ type: Schema.Types.ObjectId, ref: 'Item' }]
   },
   { timestamps: true }
 )

@@ -1,51 +1,111 @@
+import {
+  AddItem,
+  GetAllItems,
+  DeleteItem,
+  UpdateItem
+} from '../services/ItemService'
 import { useState, useEffect } from 'react'
-import { getItems, deleteItem, addItem } from '../services/ItemService'
-import ItemForm from '../components/ItemForm'
-import Item from '../components/Item'
 
 const GroceryList = () => {
   const [items, setItems] = useState([])
+  const [formValues, setFormValues] = useState({ name: '', quantity: '' })
+  const [updateId, setUpdateId] = useState(null)
 
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const fetchedItems = await getItems()
-        setItems((prevItems) => [...prevItems, ...fetchedItems])
-      } catch (error) {
-        console.error('Error retrieving items', error)
-      }
-    }
+  console.log('PRINT ITEMS 11111111')
 
-    fetchItems()
-  }, [])
-
-  const handleDeleteItem = async (itemId) => {
+  const fetchItems = async () => {
     try {
-      await deleteItem(itemId)
-      setItems((prevItems) => prevItems.filter((item) => item._id !== itemId))
+      const items = await GetAllItems()
+      // const response = await GetAllItems()
+      // const items = response.data
+      console.log('PRINT ITEMS 22222222')
+      setItems(items)
+      console.log('PRINT ITEMS 3333333')
     } catch (error) {
-      console.error('Error deleting item', error)
+      console.log('ERROR IN FETCH SAVED ITEMS', error)
+      throw error
     }
   }
 
-  const handleAddItem = async (newItem) => {
+  useEffect(() => {
+    console.log('BEFOREFETCHHHHHITEMSS')
+    fetchItems()
+    console.log('AFTERFETCHHHHHITEMMMS')
+  }, [])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    // await fetchItems()
+    setFormValues({ name: '', quantity: '' })
+    await AddItem(formValues)
+  }
+
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
+
+  const handleItemDelete = async (id) => {
     try {
-      const createdItem = await addItem(newItem)
-      setItems((prevItems) => [...prevItems, createdItem])
+      await DeleteItem(id)
+      fetchItems()
     } catch (error) {
-      console.error('Error adding item', error)
+      console.log('Error in deleting item', error)
     }
+  }
+
+  const handleItemUpdate = async (e) => {
+    e.preventDefault()
+    try {
+      await UpdateItem(updateId, formValues)
+      fetchItems()
+      setFormValues({ name: '', quantity: '' })
+      setUpdateId(null)
+    } catch (error) {
+      console.error('Error in updating item', error)
+    }
+  }
+
+  const handleUpdateStart = (id, item) => {
+    setUpdateId(id)
+    setFormValues({ name: item.name, quantity: item.quantity })
   }
 
   return (
     <div>
-      <h1>Grocery List</h1>
-      <ItemForm addItem={handleAddItem} />
-      <ul>
-        {items.map((item) => (
-          <Item key={item._id} item={item} onDelete={handleDeleteItem} />
-        ))}
-      </ul>
+      <h1>Add Item</h1>
+      <form onSubmit={updateId ? handleItemUpdate : handleSubmit}>
+        <input
+          type="text"
+          value={formValues.quantity}
+          onChange={handleChange}
+          name="quantity"
+          placeholder="Item Quantity"
+        />
+        <input
+          type="text"
+          value={formValues.name}
+          onChange={handleChange}
+          name="name"
+          placeholder="Item"
+        />
+        <button type="submit">Add Item</button>
+      </form>
+      <div>
+        <ul>
+          {items.map((item, index) => (
+            <li key={index}>
+              {item.name}
+              {item.quantity}{' '}
+              <button onClick={() => handleItemDelete(item._id)}>
+                Delete Item
+              </button>
+              <button onClick={() => handleUpdateStart(item._id, item)}>
+                Edit Item
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
